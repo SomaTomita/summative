@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mongodb:
+    container_name: mongodb_container
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-db-volume:/data/db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $root
+      MONGO_INITDB_ROOT_PASSWORD: mongo_password
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo-db-volume:
+    name: mongo-db-volume
