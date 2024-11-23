@@ -10,7 +10,7 @@ services:
       - mongo-db-volume:/data/db
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: $root
+      MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mongo_password
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
