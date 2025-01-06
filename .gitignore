@@ -6,3 +6,4 @@
 
 # Dump files
 *.dump
+*.json
